@@ -14,9 +14,8 @@ const PORT = process.env.PORT || 4000;
 const DB_URL = process.env.DATABASE_URL;
 
 // 🔹 Charger clés RSA
-const PRIVATE_KEY = fs.readFileSync(process.env.JWT_PRIVATE_KEY_PATH, "utf8");
-const PUBLIC_KEY = fs.readFileSync(process.env.JWT_PUBLIC_KEY_PATH, "utf8");
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "7d";
+const PRIVATE_KEY = Buffer.from(process.env.JWT_PRIVATE_KEY_BASE64, "base64").toString("utf8");
+const PUBLIC_KEY = Buffer.from(process.env.JWT_PUBLIC_KEY_BASE64, "base64").toString("utf8");
 
 // 🔹 Parse DB URL
 function parseDbUrl(url) {
